@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace CodelyTv\Apps\Backoffice\Frontend\Controller\Courses;
 
@@ -14,7 +14,12 @@ use Symfony\Component\Validator\Validation;
 
 final class CoursesPostWebController extends WebController
 {
-    public function __invoke(Request $request)
+    protected function exceptions(): array
+    {
+        return [];
+    }
+
+    public function __invoke(Request $request): RedirectResponse
     {
         $validationErrors = $this->validateRequest($request);
 

@@ -1,15 +1,15 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace CodelyTv\Shared\Domain\Criteria;
 
 final class Criteria
 {
-    private $filters;
-    private $order;
-    private $offset;
-    private $limit;
+    private Filters $filters;
+    private Order   $order;
+    private ?int    $offset;
+    private ?int    $limit;
 
     public function __construct(Filters $filters, Order $order, ?int $offset, ?int $limit)
     {

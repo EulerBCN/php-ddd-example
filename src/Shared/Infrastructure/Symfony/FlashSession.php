@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace CodelyTv\Shared\Infrastructure\Symfony;
 
@@ -9,7 +9,7 @@ use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 final class FlashSession
 {
-    private static $flashes = [];
+    private static array $flashes = [];
 
     public function __construct(SessionInterface $session)
     {

@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace CodelyTv\Shared\Infrastructure\Symfony;
 
@@ -25,9 +25,7 @@ final class AddJsonBodyToRequestListener
             foreach ($jsonData as $key => $value) {
                 $jsonDataLowerCase[preg_replace_callback(
                     '/_(.)/',
-                    static function ($matches) {
-                        return strtoupper($matches[1]);
-                    },
+                    static fn($matches) => strtoupper($matches[1]),
                     $key
                 )] = $value;
             }

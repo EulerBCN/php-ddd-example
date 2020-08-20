@@ -1,17 +1,17 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace CodelyTv\Mooc\CoursesCounter\Application\Increment;
 
 use CodelyTv\Mooc\Courses\Domain\CourseCreatedDomainEvent;
-use CodelyTv\Mooc\Shared\Domain\Course\CourseId;
+use CodelyTv\Mooc\Shared\Domain\Courses\CourseId;
 use CodelyTv\Shared\Domain\Bus\Event\DomainEventSubscriber;
 use function Lambdish\Phunctional\apply;
 
 final class IncrementCoursesCounterOnCourseCreated implements DomainEventSubscriber
 {
-    private $incrementer;
+    private CoursesCounterIncrementer $incrementer;
 
     public function __construct(CoursesCounterIncrementer $incrementer)
     {

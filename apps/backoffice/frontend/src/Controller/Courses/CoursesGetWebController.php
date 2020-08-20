@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace CodelyTv\Apps\Backoffice\Frontend\Controller\Courses;
 
@@ -13,6 +13,11 @@ use Symfony\Component\HttpFoundation\Response;
 
 final class CoursesGetWebController extends WebController
 {
+    protected function exceptions(): array
+    {
+        return [];
+    }
+
     public function __invoke(Request $request): Response
     {
         /** @var CoursesCounterResponse $coursesCounterResponse */

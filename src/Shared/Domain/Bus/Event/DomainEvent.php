@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace CodelyTv\Shared\Domain\Bus\Event;
 
@@ -10,9 +10,9 @@ use DateTimeImmutable;
 
 abstract class DomainEvent
 {
-    private $aggregateId;
-    private $eventId;
-    private $occurredOn;
+    private string $aggregateId;
+    private string $eventId;
+    private string $occurredOn;
 
     public function __construct(string $aggregateId, string $eventId = null, string $occurredOn = null)
     {
@@ -21,16 +21,16 @@ abstract class DomainEvent
         $this->occurredOn  = $occurredOn ?: Utils::dateToString(new DateTimeImmutable());
     }
 
-    abstract public static function eventName(): string;
-
-    abstract public function toPrimitives(): array;
-
     abstract public static function fromPrimitives(
         string $aggregateId,
         array $body,
         string $eventId,
         string $occurredOn
     ): self;
+
+    abstract public static function eventName(): string;
+
+    abstract public function toPrimitives(): array;
 
     public function aggregateId(): string
     {

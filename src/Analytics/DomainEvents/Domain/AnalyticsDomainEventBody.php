@@ -1,12 +1,12 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace CodelyTv\Analytics\DomainEvents\Domain;
 
 final class AnalyticsDomainEventBody
 {
-    private $value;
+    private array $value;
 
     public function __construct(array $value)
     {

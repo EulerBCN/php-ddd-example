@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace CodelyTv\Shared\Infrastructure\Bus\Command;
 
@@ -15,7 +15,7 @@ use Symfony\Component\Messenger\Middleware\HandleMessageMiddleware;
 
 final class InMemorySymfonyCommandBus implements CommandBus
 {
-    private $bus;
+    private MessageBus $bus;
 
     public function __construct(iterable $commandHandlers)
     {

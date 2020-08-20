@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace CodelyTv\Mooc\Courses\Application\Create;
 
@@ -8,9 +8,9 @@ use CodelyTv\Shared\Domain\Bus\Command\Command;
 
 final class CreateCourseCommand implements Command
 {
-    private $id;
-    private $name;
-    private $duration;
+    private string $id;
+    private string $name;
+    private string $duration;
 
     public function __construct(string $id, string $name, string $duration)
     {

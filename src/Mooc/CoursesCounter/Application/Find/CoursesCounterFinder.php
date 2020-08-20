@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace CodelyTv\Mooc\CoursesCounter\Application\Find;
 
@@ -9,7 +9,7 @@ use CodelyTv\Mooc\CoursesCounter\Domain\CoursesCounterRepository;
 
 final class CoursesCounterFinder
 {
-    private $repository;
+    private CoursesCounterRepository $repository;
 
     public function __construct(CoursesCounterRepository $repository)
     {

@@ -1,21 +1,21 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace CodelyTv\Mooc\CoursesCounter\Application\Increment;
 
 use CodelyTv\Mooc\CoursesCounter\Domain\CoursesCounter;
 use CodelyTv\Mooc\CoursesCounter\Domain\CoursesCounterId;
 use CodelyTv\Mooc\CoursesCounter\Domain\CoursesCounterRepository;
-use CodelyTv\Mooc\Shared\Domain\Course\CourseId;
+use CodelyTv\Mooc\Shared\Domain\Courses\CourseId;
 use CodelyTv\Shared\Domain\Bus\Event\EventBus;
 use CodelyTv\Shared\Domain\UuidGenerator;
 
 final class CoursesCounterIncrementer
 {
-    private $repository;
-    private $uuidGenerator;
-    private $bus;
+    private CoursesCounterRepository $repository;
+    private UuidGenerator            $uuidGenerator;
+    private EventBus                 $bus;
 
     public function __construct(
         CoursesCounterRepository $repository,
@@ -27,7 +27,7 @@ final class CoursesCounterIncrementer
         $this->bus           = $bus;
     }
 
-    public function __invoke(CourseId $courseId)
+    public function __invoke(CourseId $courseId): void
     {
         $counter = $this->repository->search() ?: $this->initializeCounter();
 

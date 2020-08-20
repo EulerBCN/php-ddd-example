@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace CodelyTv\Mooc\Courses\Application\Create;
 
@@ -8,13 +8,13 @@ use CodelyTv\Mooc\Courses\Domain\Course;
 use CodelyTv\Mooc\Courses\Domain\CourseDuration;
 use CodelyTv\Mooc\Courses\Domain\CourseName;
 use CodelyTv\Mooc\Courses\Domain\CourseRepository;
-use CodelyTv\Mooc\Shared\Domain\Course\CourseId;
+use CodelyTv\Mooc\Shared\Domain\Courses\CourseId;
 use CodelyTv\Shared\Domain\Bus\Event\EventBus;
 
 final class CourseCreator
 {
-    private $repository;
-    private $bus;
+    private CourseRepository $repository;
+    private EventBus         $bus;
 
     public function __construct(CourseRepository $repository, EventBus $bus)
     {
@@ -22,7 +22,7 @@ final class CourseCreator
         $this->bus        = $bus;
     }
 
-    public function __invoke(CourseId $id, CourseName $name, CourseDuration $duration)
+    public function __invoke(CourseId $id, CourseName $name, CourseDuration $duration): void
     {
         $course = Course::create($id, $name, $duration);
 

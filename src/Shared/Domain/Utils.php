@@ -1,11 +1,12 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace CodelyTv\Shared\Domain;
 
 use DateTimeImmutable;
 use DateTimeInterface;
+use ReflectionClass;
 use RuntimeException;
 use function Lambdish\Phunctional\filter;
 
@@ -61,32 +62,28 @@ final class Utils
     {
         $results = [];
         foreach ($array as $key => $value) {
-            if (is_array($value) && ! empty($value)) {
-                $results = array_merge($results, static::dot($value, $prepend.$key.'.'));
+            if (is_array($value) && !empty($value)) {
+                $results = array_merge($results, static::dot($value, $prepend . $key . '.'));
             } else {
-                $results[$prepend.$key] = $value;
+                $results[$prepend . $key] = $value;
             }
         }
-        return $results;
-    }
 
-    public static function directoriesIn(string $path): array
-    {
-        return filter(
-            static function (string $possibleModule) {
-                return !in_array($possibleModule, ['.', '..']);
-            },
-            scandir($path)
-        );
+        return $results;
     }
 
     public static function filesIn(string $path, $fileType): array
     {
         return filter(
-            static function (string $possibleModule) use ($fileType) {
-                return strstr($possibleModule, $fileType);
-            },
+            static fn(string $possibleModule) => strstr($possibleModule, $fileType),
             scandir($path)
         );
+    }
+
+    public static function extractClassName(object $object): string
+    {
+        $reflect = new ReflectionClass($object);
+
+        return $reflect->getShortName();
     }
 }

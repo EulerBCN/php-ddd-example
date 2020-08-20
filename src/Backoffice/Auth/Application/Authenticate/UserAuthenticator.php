@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace CodelyTv\Backoffice\Auth\Application\Authenticate;
 
@@ -13,7 +13,7 @@ use CodelyTv\Backoffice\Auth\Domain\InvalidAuthUsername;
 
 final class UserAuthenticator
 {
-    private $repository;
+    private AuthRepository $repository;
 
     public function __construct(AuthRepository $repository)
     {

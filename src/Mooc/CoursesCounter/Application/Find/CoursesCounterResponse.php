@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace CodelyTv\Mooc\CoursesCounter\Application\Find;
 
@@ -8,7 +8,7 @@ use CodelyTv\Shared\Domain\Bus\Query\Response;
 
 final class CoursesCounterResponse implements Response
 {
-    private $total;
+    private int $total;
 
     public function __construct(int $total)
     {

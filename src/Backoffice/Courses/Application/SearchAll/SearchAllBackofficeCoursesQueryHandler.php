@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace CodelyTv\Backoffice\Courses\Application\SearchAll;
 
@@ -9,7 +9,7 @@ use CodelyTv\Shared\Domain\Bus\Query\QueryHandler;
 
 final class SearchAllBackofficeCoursesQueryHandler implements QueryHandler
 {
-    private $searcher;
+    private AllBackofficeCoursesSearcher $searcher;
 
     public function __construct(AllBackofficeCoursesSearcher $searcher)
     {

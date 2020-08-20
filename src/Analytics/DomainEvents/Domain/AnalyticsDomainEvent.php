@@ -1,15 +1,15 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace CodelyTv\Analytics\DomainEvents\Domain;
 
 final class AnalyticsDomainEvent
 {
-    private $id;
-    private $aggregateId;
-    private $name;
-    private $body;
+    private AnalyticsDomainEventId          $id;
+    private AnalyticsDomainEventAggregateId $aggregateId;
+    private AnalyticsDomainEventName        $name;
+    private AnalyticsDomainEventBody        $body;
 
     public function __construct(
         AnalyticsDomainEventId $id,

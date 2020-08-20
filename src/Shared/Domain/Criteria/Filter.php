@@ -1,14 +1,14 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace CodelyTv\Shared\Domain\Criteria;
 
 final class Filter
 {
-    private $field;
-    private $operator;
-    private $value;
+    private FilterField    $field;
+    private FilterOperator $operator;
+    private FilterValue    $value;
 
     public function __construct(FilterField $field, FilterOperator $operator, FilterValue $value)
     {

@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace CodelyTv\Shared\Domain\Criteria;
 
@@ -9,14 +9,14 @@ use function Lambdish\Phunctional\reduce;
 
 final class Filters extends Collection
 {
-    protected function type(): string
-    {
-        return Filter::class;
-    }
-
     public static function fromValues(array $values): self
     {
         return new self(array_map(self::filterBuilder(), $values));
+    }
+
+    private static function filterBuilder(): callable
+    {
+        return fn(array $values) => Filter::fromValues($values);
     }
 
     public function add(Filter $filter): self
@@ -32,18 +32,14 @@ final class Filters extends Collection
     public function serialize(): string
     {
         return reduce(
-            static function (string $accumulate, Filter $filter) {
-                return sprintf('%s^%s', $accumulate, $filter->serialize());
-            },
+            static fn(string $accumulate, Filter $filter) => sprintf('%s^%s', $accumulate, $filter->serialize()),
             $this->items(),
             ''
         );
     }
 
-    private static function filterBuilder(): callable
+    protected function type(): string
     {
-        return function (array $values) {
-            return Filter::fromValues($values);
-        };
+        return Filter::class;
     }
 }

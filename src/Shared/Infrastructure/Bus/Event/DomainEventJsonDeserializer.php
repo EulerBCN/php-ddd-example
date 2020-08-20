@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace CodelyTv\Shared\Infrastructure\Bus\Event;
 
@@ -10,7 +10,7 @@ use RuntimeException;
 
 final class DomainEventJsonDeserializer
 {
-    private $mapping;
+    private DomainEventMapping $mapping;
 
     public function __construct(DomainEventMapping $mapping)
     {

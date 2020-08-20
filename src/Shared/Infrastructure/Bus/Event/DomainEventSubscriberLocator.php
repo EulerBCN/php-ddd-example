@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace CodelyTv\Shared\Infrastructure\Bus\Event;
 
@@ -13,14 +13,14 @@ use function Lambdish\Phunctional\search;
 
 final class DomainEventSubscriberLocator
 {
-    private $mapping;
+    private array $mapping;
 
     public function __construct(Traversable $mapping)
     {
         $this->mapping = iterator_to_array($mapping);
     }
 
-    public function allSubscribedTo(string $eventClass): callable
+    public function allSubscribedTo(string $eventClass): array
     {
         $formatted = CallableFirstParameterExtractor::forPipedCallables($this->mapping);
 
@@ -30,9 +30,8 @@ final class DomainEventSubscriberLocator
     public function withRabbitMqQueueNamed(string $queueName): DomainEventSubscriber
     {
         $subscriber = search(
-            static function (DomainEventSubscriber $subscriber) use ($queueName) {
-                return RabbitMqQueueNameFormatter::format($subscriber) === $queueName;
-            },
+            static fn(DomainEventSubscriber $subscriber) => RabbitMqQueueNameFormatter::format($subscriber) ===
+                                                            $queueName,
             $this->mapping
         );
 

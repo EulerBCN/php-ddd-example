@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace CodelyTv\Apps\Backoffice\Frontend\Controller\Home;
 
@@ -10,6 +10,11 @@ use Symfony\Component\HttpFoundation\Response;
 
 final class HomeGetWebController extends WebController
 {
+    protected function exceptions(): array
+    {
+        return [];
+    }
+
     public function __invoke(Request $request): Response
     {
         return $this->render(

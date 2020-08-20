@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace CodelyTv\Shared\Domain\ValueObject;
 
@@ -9,7 +9,7 @@ use Ramsey\Uuid\Uuid as RamseyUuid;
 
 class Uuid
 {
-    protected $value;
+    protected string $value;
 
     public function __construct(string $value)
     {
@@ -28,20 +28,20 @@ class Uuid
         return $this->value;
     }
 
-    private function ensureIsValidUuid($id): void
-    {
-        if (!RamseyUuid::isValid($id)) {
-            throw new InvalidArgumentException(sprintf('<%s> does not allow the value <%s>.', static::class, $id));
-        }
-    }
-
     public function equals(Uuid $other): bool
     {
         return $this->value() === $other->value();
     }
 
-    public function __toString()
+    public function __toString(): string
     {
         return $this->value();
+    }
+
+    private function ensureIsValidUuid($id): void
+    {
+        if (!RamseyUuid::isValid($id)) {
+            throw new InvalidArgumentException(sprintf('<%s> does not allow the value <%s>.', static::class, $id));
+        }
     }
 }

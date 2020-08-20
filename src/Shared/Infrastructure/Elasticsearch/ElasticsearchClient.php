@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace CodelyTv\Shared\Infrastructure\Elasticsearch;
 
@@ -8,8 +8,8 @@ use Elasticsearch\Client;
 
 final class ElasticsearchClient
 {
-    private $client;
-    private $indexPrefix;
+    private Client $client;
+    private string $indexPrefix;
 
     public function __construct(Client $client, string $indexPrefix)
     {

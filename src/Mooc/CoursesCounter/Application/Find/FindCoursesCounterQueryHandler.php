@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace CodelyTv\Mooc\CoursesCounter\Application\Find;
 
@@ -8,7 +8,7 @@ use CodelyTv\Shared\Domain\Bus\Query\QueryHandler;
 
 final class FindCoursesCounterQueryHandler implements QueryHandler
 {
-    private $finder;
+    private CoursesCounterFinder $finder;
 
     public function __construct(CoursesCounterFinder $finder)
     {

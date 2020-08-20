@@ -1,14 +1,14 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace CodelyTv\Backoffice\Courses\Application;
 
 final class BackofficeCourseResponse
 {
-    private $id;
-    private $name;
-    private $duration;
+    private string $id;
+    private string $name;
+    private string $duration;
 
     public function __construct(string $id, string $name, string $duration)
     {

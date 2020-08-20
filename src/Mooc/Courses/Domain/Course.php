@@ -1,17 +1,17 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace CodelyTv\Mooc\Courses\Domain;
 
-use CodelyTv\Mooc\Shared\Domain\Course\CourseId;
+use CodelyTv\Mooc\Shared\Domain\Courses\CourseId;
 use CodelyTv\Shared\Domain\Aggregate\AggregateRoot;
 
 final class Course extends AggregateRoot
 {
-    private $id;
-    private $name;
-    private $duration;
+    private CourseId       $id;
+    private CourseName     $name;
+    private CourseDuration $duration;
 
     public function __construct(CourseId $id, CourseName $name, CourseDuration $duration)
     {
